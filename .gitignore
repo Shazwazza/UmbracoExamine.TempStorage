@@ -7,3 +7,8 @@ ExamineIndexes/
 
 # Ignore Umbraco content cache file
 umbraco.config
+UmbracoExamine.TempStorage.Tests/bin/*
+UmbracoExamine.TempStorage.Tests/obj/*
+UmbracoExamine.TempStorage/obj/*
+UmbracoExamine.TempStorage/bin/*
+UmbracoExamine.TempStorage/packages/*
