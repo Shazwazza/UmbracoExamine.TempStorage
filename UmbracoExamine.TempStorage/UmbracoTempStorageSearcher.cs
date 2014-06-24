@@ -6,7 +6,7 @@ using Umbraco.Core;
 
 namespace UmbracoExamine.TempStorage
 {
-    public class UmbracoTempStorageContentSearcher : UmbracoExamineSearcher
+    public class UmbracoTempStorageSearcher : UmbracoExamineSearcher
     {
         private volatile Lucene.Net.Store.Directory _directory;
         private static readonly object Locker = new object();
@@ -22,7 +22,7 @@ namespace UmbracoExamine.TempStorage
 
             var codegenPath = HttpRuntime.CodegenDir;
 
-            _tempPath = Path.Combine(codegenPath, configuredPath.TrimStart('~'));
+            _tempPath = Path.Combine(codegenPath, configuredPath.TrimStart('~', '/').Replace("/", "\\"));
 
             if (config != null)
             {

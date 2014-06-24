@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+using System;
 using System.Collections.Specialized;
-using System.Text;
-using System.Threading.Tasks;
-using Examine;
 using Examine.LuceneEngine.Config;
 using Lucene.Net.Index;
 
 namespace UmbracoExamine.TempStorage
 {
-    public class UmbracoTempStorageContentIndexer : UmbracoContentIndexer
+    public class UmbracoTempStorageMemberIndexer : UmbracoMemberIndexer
     {
         private readonly UmbracoTempStorageIndexer _helper = new UmbracoTempStorageIndexer();
 
-        public UmbracoTempStorageContentIndexer()
+        public UmbracoTempStorageMemberIndexer()
         {
         }
 
@@ -46,6 +41,5 @@ namespace UmbracoExamine.TempStorage
                 _helper.Snapshotter, 
                 IndexWriter.MaxFieldLength.UNLIMITED);
         }
-
     }
 }

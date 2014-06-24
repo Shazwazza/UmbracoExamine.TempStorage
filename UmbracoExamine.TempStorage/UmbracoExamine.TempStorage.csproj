@@ -195,7 +195,9 @@
     <Compile Include="MultiIndexOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TempStorageDirectory.cs" />
-    <Compile Include="UmbracoTempStorageContentSearcher.cs" />
+    <Compile Include="UmbracoTempStorageSearcher.cs" />
+    <Compile Include="UmbracoTempStorageIndexer.cs" />
+    <Compile Include="UmbracoTempStorageMemberIndexer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
