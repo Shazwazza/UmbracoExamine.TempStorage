@@ -5,6 +5,7 @@ using Lucene.Net.Analysis;
 using Lucene.Net.Index;
 using Lucene.Net.Store;
 using Umbraco.Core;
+using Umbraco.Core.IO;
 using Directory = System.IO.Directory;
 
 namespace UmbracoExamine.TempStorage
@@ -41,10 +42,10 @@ namespace UmbracoExamine.TempStorage
                 }
             }
 
-            InitializeLocalIndexAndDirectory(baseLuceneDirectory, analyzer);
+            InitializeLocalIndexAndDirectory(baseLuceneDirectory, analyzer, configuredPath);
         }
 
-        private void InitializeLocalIndexAndDirectory(Lucene.Net.Store.Directory baseLuceneDirectory, Analyzer analyzer)
+        private void InitializeLocalIndexAndDirectory(Lucene.Net.Store.Directory baseLuceneDirectory, Analyzer analyzer,string configuredPath)
         {
             lock (Locker)
             {
@@ -80,11 +81,24 @@ namespace UmbracoExamine.TempStorage
                     {
                         try
                         {
+                            var basePath = IOHelper.MapPath(configuredPath);
+
                             var commit = Snapshotter.Snapshot();
                             var fileNames = commit.GetFileNames();
+                            
                             foreach (var fileName in fileNames)
                             {
-                                File.Copy(fileName, Path.Combine(_tempPath, Path.GetFileName(fileName)), true);
+                                File.Copy(
+                                    Path.Combine(basePath, "Index", fileName),
+                                    Path.Combine(_tempPath, Path.GetFileName(fileName)), true);
+                            }
+
+                            var segments = commit.GetSegmentsFileName();
+                            if (segments.IsNullOrWhiteSpace() == false)
+                            {
+                                File.Copy(
+                                    Path.Combine(basePath, "Index", segments),
+                                    Path.Combine(_tempPath, Path.GetFileName(segments)), true);
                             }
                         }
                         finally
