@@ -27,6 +27,8 @@ Change the searchers to be of type:
   
 ## Storage Syncing
 
+*Coming soon!... currently this option has some issues so best not to use it yet.*
+
 Optionally you can add another config parameter to each indexer/searcher:
 
     syncStorage="true"
