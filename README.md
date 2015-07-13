@@ -3,8 +3,6 @@ UmbracoExamine.TempStorage
 
 Umbraco Examine providers that allow temporary storage of the index in the local CodeGen folder if the site is hosted on a network file share to avoid latency issues.
 
-This is not to be used in any type of load balancing setup if you have syncStorage enabled otherwise you will run in to problems.
-
 ## Docs
 
 The purpose of these providers is to work on an index in local temporary storage on the current machine. The resulting index paths will result in a path similar to:
@@ -25,12 +23,3 @@ Change the searchers to be of type:
 
     UmbracoExamine.TempStorage.UmbracoTempStorageSearcher, UmbracoExamine.TempStorage
   
-## Storage Syncing
-
-*Coming soon!... currently this option has some issues so best not to use it yet.*
-
-Optionally you can add another config parameter to each indexer/searcher:
-
-    syncStorage="true"
-  
-If this is enabled, the index will be persisted to the normal path specified in the config (i.e. ~/App_Data/TEMP/ExamineIndexes/Internal/) however, on startup the index will be copied to the local temp storage and all searches will operate from this location. When the index is written to, it will write to both local storage and the normal storage (they will be kept in sync). 
