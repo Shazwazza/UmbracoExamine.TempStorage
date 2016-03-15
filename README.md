@@ -3,6 +3,8 @@ UmbracoExamine.TempStorage
 
 Umbraco Examine providers that allow temporary storage of the index in the local CodeGen folder if the site is hosted on a network file share to avoid latency issues.
 
+**This codebase is outdated and no longer maintained, the functionality of this project has been migrated into the Umbraco Core codebase**
+
 ## Docs
 
 The purpose of these providers is to work on an index in local temporary storage on the current machine. The resulting index paths will result in a path similar to:
